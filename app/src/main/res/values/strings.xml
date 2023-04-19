@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Compose-BasicStateCodelab</string>
+    <string name="count_glasses">You\'ve had %1$s glasses.</string>
 </resources>
