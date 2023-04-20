@@ -23,9 +23,17 @@ fun WaterCounter(
     ) {
         // Changes to count are now tracked by Compose
         var count by remember { mutableStateOf(0) }
+
         // This text is present if the button has been clicked
         // at least once; absent otherwise
         if (count > 0) {
+            var showTask by remember { mutableStateOf(true) }
+            if (showTask) {
+                WellnessTaskItem(
+                    taskName = "Have you taken your 15 minute walk today?",
+                    onClose = { showTask = false }
+                )
+            }
             Text(text = stringResource(text, count))
         }
 
