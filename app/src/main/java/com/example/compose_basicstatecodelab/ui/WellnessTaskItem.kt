@@ -2,6 +2,7 @@ package com.example.compose_basicstatecodelab.ui
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Checkbox
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
@@ -16,6 +17,8 @@ import androidx.compose.ui.unit.dp
 fun WellnessTaskItem(
     taskName: String,
     onClose: () -> Unit,
+    isChecked: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -28,7 +31,11 @@ fun WellnessTaskItem(
                 .weight(1f)
                 .padding(start = 16.dp)
         )
-        IconButton(onClick = onClose) {
+        Checkbox(
+            checked = isChecked,
+            onCheckedChange = onCheckedChange
+        )
+        IconButton(onClick = onClose, modifier = Modifier.padding(start = 8.dp)) {
             Icon(
                 imageVector = Icons.Filled.Close,
                 contentDescription = "Close"
