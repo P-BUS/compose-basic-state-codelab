@@ -22,14 +22,17 @@ fun WaterCounter(
         modifier = modifier.padding(16.dp)
     ) {
         // Changes to count are now tracked by Compose
-        //val count: MutableState<Int> = remember { mutableStateOf(0) }
         var count by remember { mutableStateOf(0) }
-        Text(
-            text = stringResource(text, count)
-        )
+        // This text is present if the button has been clicked
+        // at least once; absent otherwise
+        if (count > 0) {
+            Text(text = stringResource(text, count))
+        }
+
         Button(
             onClick = { count++ },
-            modifier = Modifier.padding(top = 8.dp)
+            modifier = Modifier.padding(top = 8.dp),
+            enabled = count < 10
         ) {
             Text("Add one")
         }
