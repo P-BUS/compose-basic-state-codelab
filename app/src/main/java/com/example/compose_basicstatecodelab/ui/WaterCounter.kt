@@ -1,6 +1,8 @@
 package com.example.compose_basicstatecodelab.ui
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -36,13 +38,22 @@ fun WaterCounter(
             }
             Text(text = stringResource(text, count))
         }
-
-        Button(
-            onClick = { count++ },
+        Row(
             modifier = Modifier.padding(top = 8.dp),
-            enabled = count < 10
+            horizontalArrangement = Arrangement.SpaceAround
         ) {
-            Text("Add one")
+            Button(
+                onClick = { count++ },
+                enabled = count < 10
+            ) {
+                Text("Add one")
+            }
+            Button(
+                onClick = { count = 0 },
+                modifier = Modifier.padding(start = 8.dp),
+            ) {
+                Text("Clear water count")
+            }
         }
     }
 }
