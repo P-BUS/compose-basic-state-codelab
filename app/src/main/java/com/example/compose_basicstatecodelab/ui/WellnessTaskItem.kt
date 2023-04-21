@@ -21,7 +21,7 @@ import com.example.compose_basicstatecodelab.data.WellnessTask
 @Composable
 fun WellnessTaskItem(
     taskName: String,
-    onCloseTask: () -> Unit,
+    onClose: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     var checkedState by rememberSaveable { mutableStateOf(false) }
@@ -30,7 +30,7 @@ fun WellnessTaskItem(
         taskName = taskName,
         isChecked = checkedState,
         onCheckedChange = { newValue -> checkedState = newValue },
-        onCloseTask = onCloseTask,
+        onClose = onClose,
         modifier = modifier
     )
 }
@@ -40,7 +40,7 @@ fun WellnessTaskItem(
     taskName: String,
     isChecked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
-    onCloseTask: () -> Unit,
+    onClose: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -57,7 +57,7 @@ fun WellnessTaskItem(
             checked = isChecked,
             onCheckedChange = onCheckedChange
         )
-        IconButton(onClick = onCloseTask) {
+        IconButton(onClick = onClose) {
             Icon(
                 imageVector = Icons.Filled.Close,
                 contentDescription = "Close"

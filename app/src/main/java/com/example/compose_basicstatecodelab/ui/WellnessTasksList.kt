@@ -19,7 +19,7 @@ fun WellnessTasksList(
         ) {task ->
             WellnessTaskItem(
                 taskName = task.label,
-                onCloseTask = { onCloseTask(task) }
+                onClose = { onCloseTask(task) }
             )
         }
     }
