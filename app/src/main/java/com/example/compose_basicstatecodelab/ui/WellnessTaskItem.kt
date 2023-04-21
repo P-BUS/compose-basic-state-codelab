@@ -10,17 +10,18 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.compose_basicstatecodelab.data.WellnessTask
 
 @Composable
 fun WellnessTaskItem(
     taskName: String,
+    onCloseTask: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     var checkedState by rememberSaveable { mutableStateOf(false) }
@@ -29,7 +30,7 @@ fun WellnessTaskItem(
         taskName = taskName,
         isChecked = checkedState,
         onCheckedChange = { newValue -> checkedState = newValue },
-        onClose = {  },
+        onCloseTask = onCloseTask,
         modifier = modifier
     )
 }
@@ -39,7 +40,7 @@ fun WellnessTaskItem(
     taskName: String,
     isChecked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
-    onClose: () -> Unit,
+    onCloseTask: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -56,7 +57,7 @@ fun WellnessTaskItem(
             checked = isChecked,
             onCheckedChange = onCheckedChange
         )
-        IconButton(onClick = onClose) {
+        IconButton(onClick = onCloseTask) {
             Icon(
                 imageVector = Icons.Filled.Close,
                 contentDescription = "Close"
