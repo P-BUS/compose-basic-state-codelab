@@ -9,7 +9,7 @@ class WellnessViewModel : ViewModel() {
     private val _tasks = getWellnessTasks().toMutableStateList()
     val tasks: List<WellnessTask> = _tasks
 
-    fun remove(task: WellnessTask) {
+    fun removeTask(task: WellnessTask) {
         _tasks.remove(task)
     }
 
