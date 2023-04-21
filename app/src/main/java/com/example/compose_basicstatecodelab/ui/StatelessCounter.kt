@@ -21,16 +21,7 @@ fun StatelessCounter(
     Column(
         modifier = modifier.padding(16.dp)
     ) {
-        // This text is present if the button has been clicked
-        // at least once; absent otherwise
         if (count > 0) {
-           /* var showTask by rememberSaveable { mutableStateOf(true) }
-            if (showTask) {
-                WellnessTaskItem(
-                    taskName = "Have you taken your 15 minute walk today?",
-                    onClose = { showTask = false }
-                )
-            }*/
             Text(text = stringResource(text, count))
         }
         Row(
@@ -43,12 +34,6 @@ fun StatelessCounter(
             ) {
                 Text("Add one")
             }
-          /*  Button(
-                onClick = { count = 0 },
-                modifier = Modifier.padding(start = 8.dp),
-            ) {
-                Text("Clear water count")
-            }*/
         }
     }
 }
