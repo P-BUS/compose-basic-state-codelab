@@ -14,14 +14,15 @@ import com.example.compose_basicstatecodelab.data.WellnessTask
 @Composable
 fun WellnessScreen(
     modifier: Modifier = Modifier,
-    wellnessViewModel: WellnessViewModel = viewModel()
+    wellnessViewModel: WellnessViewModel = viewModel(),
 ) {
     Column(modifier = modifier) {
         StatefulCounter()
 
         WellnessTasksList(
             list = wellnessViewModel.tasks,
-            onCloseTask = { task -> wellnessViewModel.removeTask(task) }
+            onCloseTask = { task -> wellnessViewModel.removeTask(task) },
+            onCheckedTask = { task, checked -> wellnessViewModel.changeTaskChecked(task, checked) },
         )
     }
 }

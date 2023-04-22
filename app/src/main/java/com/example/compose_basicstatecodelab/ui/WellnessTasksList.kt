@@ -10,6 +10,7 @@ import com.example.compose_basicstatecodelab.data.WellnessTask
 fun WellnessTasksList(
     list: List<WellnessTask>,
     onCloseTask: (WellnessTask) -> Unit,
+    onCheckedTask: (WellnessTask, Boolean) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyColumn(modifier = modifier) {
@@ -19,7 +20,9 @@ fun WellnessTasksList(
         ) {task ->
             WellnessTaskItem(
                 taskName = task.label,
-                onClose = { onCloseTask(task) }
+                isChecked = task.checked,
+                onClose = { onCloseTask(task) },
+                onCheckedChange = { checked -> onCheckedTask(task, checked) }
             )
         }
     }

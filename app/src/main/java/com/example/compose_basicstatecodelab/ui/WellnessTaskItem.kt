@@ -21,25 +21,8 @@ import com.example.compose_basicstatecodelab.data.WellnessTask
 @Composable
 fun WellnessTaskItem(
     taskName: String,
-    onClose: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    var checkedState by rememberSaveable { mutableStateOf(false) }
-
-    WellnessTaskItem(
-        taskName = taskName,
-        isChecked = checkedState,
-        onCheckedChange = { newValue -> checkedState = newValue },
-        onClose = onClose,
-        modifier = modifier
-    )
-}
-
-@Composable
-fun WellnessTaskItem(
-    taskName: String,
-    isChecked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
+    isChecked: Boolean,
     onClose: () -> Unit,
     modifier: Modifier = Modifier
 ) {
